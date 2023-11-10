@@ -1,5 +1,5 @@
 import React from 'react'
-import { Nav, Navbar, NavDropdown, Image } from 'react-bootstrap'
+import { Nav, Navbar, NavDropdown, } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import logo from '../components/images/taskLogo.png'
 import { useAuth } from '../contexts/AuthContext'
