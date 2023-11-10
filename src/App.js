@@ -2,11 +2,12 @@ import './App.css';
 import Footer from './components/Footer';
 import Home from './components/Home/Home';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navigation from './components/Navigation';
-import AuthProvider from './contexts/AuthContext';
-import Login from './components/Auth/Login';
-import Logout from './components/Auth/Logout';
-import Categories from './components/Categories/Categories';
+import Navigation from './components/Navigation'
+import AuthProvider from './contexts/AuthContext'
+import Login from './components/Auth/Login'
+import Logout from './components/Auth/Logout'
+import Categories from './components/Categories/Categories'
+import Task from './components/Task/Task'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/home' element={<Home />} />
             <Route path='/categories' element={<Categories />} />
+            <Route path='/tasks' element={<Task />} />
             <Route path='/login' element={<Login />} />
             <Route path='/logout' element={<Logout />} />
           </Routes>

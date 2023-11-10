@@ -35,6 +35,9 @@ export default function Navigation() {
                     <Link to='/categories' className='nav-link'>
                         Categories
                     </Link>
+                    <Link to='/tasks' className='nav-link'>
+                        Tasks
+                    </Link>
                     {!currentUser && (
                         <Link to='/login' className='nav-link'>
                             Login

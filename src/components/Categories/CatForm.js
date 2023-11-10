@@ -7,6 +7,30 @@ export default function CatForm(props) {
 
   const handleSubmit = (values) => {
     console.log(values)
+    // Create logic, API and update logic later
+    if(!props.category) {
+      // If there is no prop for category we are in create mode inside this scope.
+      // First, we assemble a temp object to send in our request
+      const catToCreate = values
+
+      // Second, we send the object in a POST request using axios
+      axios.post(`http://todoapi.devchristopherrandall.com/api/Categories`, catToCreate).then(() => {
+        props.setShowCreate(false) // This will close the create form automatically.
+        props.getCategories() // This will refresh the table with the new Category.
+      })
+    }else {
+      // If there is a prop for Category we are in Edit mode inside this scope
+      // First, we assemble our temp object, adding in the categoryId
+      const catToEdit = {
+        catergoryId: props.category.catergoryId,
+        catName: values.catName,
+        catDesc: values.catDesc
+      }
+      axios.put(`http://todoapi.devchristopherrandall.com/api/Categories/${props.category.catergoryId}`, catToEdit ).then(() => {
+        props.setShowEdit(false) // This will close the create form automatically.
+        props.getCategories() // This will refresh the table with the new Category.
+      })
+    }
   }
 
   return (
@@ -16,7 +40,7 @@ export default function CatForm(props) {
         initialValues={
           {
             catName: props.category ? props.category.catName : '',
-            catDescription: props.category ? props.category.catDescription : ''
+            catDesc: props.category ? props.category.catDesc : ''
           }}
         onSubmit={values => handleSubmit(values)}>
 
@@ -29,9 +53,9 @@ export default function CatForm(props) {
               }
             </div>
             <div className="form-group m-1 p-1">
-              <Field name='catDescription' className="form-control" placeholder="Description" />
-              {errors.catDescription && touched.catDescription &&
-                <div classDescription='text-danger'>{errors.catDescription}</div>
+              <Field name='catDesc' className="form-control" placeholder="Description" />
+              {errors.catDesc && touched.catDesc &&
+                <div classDescription='text-danger'>{errors.catDesc}</div>
               }
             </div>
             <div className="form-group m-1">
