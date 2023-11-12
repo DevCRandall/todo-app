@@ -5,7 +5,7 @@ import axios from 'axios'
 import TaskEdit from './TaskEdit'
 
 export default function SingleTask(props) {
-  const { name, description, toDoId } = props.task
+  const { name, done, toDoId } = props.task
 
   // Below hook controls whether the EDIT form is show/hidden
   const [showEdit, setShowEdit] = useState(false)
@@ -43,9 +43,7 @@ export default function SingleTask(props) {
         </div>
       }
       <h3>{name}</h3>
-      {description !== null ? 
-        <p>{description}</p> : <p>No description provided</p>
-      }
+      <p>{String(done)}</p>
     </div>
   )
 }

@@ -18,7 +18,8 @@ export default function ToDo() {
   const [filter, setFilter] = useState(0);
 
     const getTasks = () => {
-      axios.get(`http://todoapi.devchristopherrandall.com/api/toDos`).then(response => {
+      axios.get(`http://todoapi.devchristopherrandall.com/api/ToDos`).then(response => {
+        console.log(response)
         setTasks(response.data)
       })
     }

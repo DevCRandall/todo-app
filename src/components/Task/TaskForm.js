@@ -2,13 +2,18 @@ import React, { useState, useEffect } from 'react'
 import { Formik, Form, Field } from 'formik'
 import { toDoSchema } from '../utilities/validationSchema'
 import axios from 'axios'
+import Select from 'react-select'
 
 export default function TaskForm(props) {
     const [categories, setCategories] = useState([])
 
+    const taskOptions = [
+        { value: true, label: 'Done'},
+        { value: false, label: 'Not Done'}
+    ]
+
     useEffect(() => {
         axios.get(`http://todoapi.devchristopherrandall.com/api/Categories`).then((response) => {
-            console.log(response)
             setCategories(response.data)
         })
     }, [])
@@ -21,9 +26,13 @@ export default function TaskForm(props) {
             const taskToCreate = values
 
             // Second, we pass the resource to our API in an axios.post() request
-            axios.post(`http://todoapi.devchristopherrandall.com/api/toDos`, taskToCreate).then(() => {
+            axios.post(`http://todoapi.devchristopherrandall.com/api/ToDos`, taskToCreate).then(() => {
                 props.setShowCreate(false) // Close the create form in Resources.js
                 props.getTasks() // Update Resources tiles in Resources.js
+            }).catch((error) => {
+                if( error.response ){
+                    console.log(error.response.data); // => the response payload 
+                }
             })
         } else {
             // If there is a resource prop, we are in edit mode in this scope
@@ -32,7 +41,7 @@ export default function TaskForm(props) {
             const taskToEdit = {
                 toDoId: props.task.toDoId,
                 name: values.name,
-                done: values.done,
+                done: props.task.done,
                 categoryId: values.categoryId
             }
             // Second, we make the PUT request using Axios and passing in our resourceToEdit
@@ -49,9 +58,10 @@ export default function TaskForm(props) {
         <Formik
             validationSchema={toDoSchema}
             initialValues={{
-                name: props.tasks ? props.task.name : '',
-                done: props.tasks ? props.task.done : '',
-                categoryId: props.tasks ? props.task.categoryId : ''
+                // "The JSON value could not be converted to System.Boolean.
+                name: props.task ? props.task.name : '',
+                done: props.task ? props.task.done : false,
+                categoryId: props.task ? props.task.categoryId : ''
             }}
             onSubmit={(values) => handleSubmit(values)}
         >
@@ -64,16 +74,22 @@ export default function TaskForm(props) {
                         {errors.name && touched.name && <div className='text-danger'>{errors.name}</div>}
                     </div>
 
-                    <div className='form-group m-3'>
-                        <Field name='done' placeholder='Status' className='form-control' />
-                        {errors.done && touched.done && <div className='text-danger'>{errors.done}</div>}
+                    <div className='form-group m-3 text-dark'>
+                        {/* Try not using a drop down for submitting values */}
+                        <Select 
+                        className="basic-single"
+                        classNamePrefix="select"
+                        name={taskOptions}
+                        options={taskOptions}
+                        />
+
                     </div>
 
                     <div className='form-group m-3'>
                         <Field as='select' name='categoryId' className='form-control'>
                             {/* This first option tag acts as a placeholder for out select list */}
                             <option value='' disabled>
-                                [-- Please choose==]
+                                [=== Please choose ===]
                             </option>
                             {/* Below we will map an option for each category in the API */}
                             {categories.map((cat) => (

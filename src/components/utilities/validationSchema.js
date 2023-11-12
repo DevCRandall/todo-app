@@ -7,7 +7,6 @@ const catSchema = Yup.object().shape({
 
 const toDoSchema = Yup.object().shape({
   name: Yup.string().max(100, 'Max 100 characters').required('Name is required'),
-  done: Yup.bool().required('Status is required'),
   categoryId: Yup.number().required('Please select a Category!')
 })
 
