@@ -24,6 +24,16 @@ export default function FilterTask(props) {
           {cat.catName}
         </button>  
       )}
+
+      {!props.showComplete ?
+        <button className="btn btn-outline-warning bg-dark m-1" key={props.done} onClick={() => props.setShowComplete(!props.showComplete)}>
+          Show Completed
+        </button> :
+        <button className="btn btn-warning m-1" key={props.done} onClick={() => props.setShowComplete(!props.showComplete)}>
+          Hide Completed
+        </button>
+
+      }
     </div>
   )
 }

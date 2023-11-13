@@ -2,15 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Formik, Form, Field } from 'formik'
 import { toDoSchema } from '../utilities/validationSchema'
 import axios from 'axios'
-import Select from 'react-select'
 
 export default function TaskForm(props) {
     const [categories, setCategories] = useState([])
 
-    const taskOptions = [
-        { value: true, label: 'Done'},
-        { value: false, label: 'Not Done'}
-    ]
+    
 
     useEffect(() => {
         axios.get(`http://todoapi.devchristopherrandall.com/api/Categories`).then((response) => {
@@ -72,17 +68,6 @@ export default function TaskForm(props) {
                     <div className='form-group m-3'>
                         <Field name='name' placeholder='name' className='form-control' />
                         {errors.name && touched.name && <div className='text-danger'>{errors.name}</div>}
-                    </div>
-
-                    <div className='form-group m-3 text-dark'>
-                        {/* Try not using a drop down for submitting values */}
-                        <Select 
-                        className="basic-single"
-                        classNamePrefix="select"
-                        name={taskOptions}
-                        options={taskOptions}
-                        />
-
                     </div>
 
                     <div className='form-group m-3'>

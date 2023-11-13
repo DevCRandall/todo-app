@@ -4,12 +4,12 @@ section.tasks {
   background-color: #47CEE6;
 }
 
-section.tasks article.taskGallery {
+section.categories article.categoryGallery {
   padding: 2em 0 4em;
 }
 
 /* Below is the styling for out resource tile */
-article.taskGallery div.singleTask {
+article.categoryGallery div.singleCategory {
   background-color: rgba(200, 200, 200, .8);
   border-radius: 5px;
   margin: 0;
@@ -21,18 +21,18 @@ article.taskGallery div.singleTask {
   /* Edit and Delete buttons will be positioned absolute, so to create the boundaries for their absolute positioning, we make the outer container relative. */
 }
 
-div.singleTask h3 {
+div.singleCategory h3 {
   background-color: rgb(23, 162, 184);
   padding: .5em 0;
   border-bottom: 4px solid #212529;
   color: #212529;
 }
 
-div.singleTask p {
+div.singleCategory p {
   padding: 1em;
 }
 
-.singleTask button {
+.singleCategory button {
   position: absolute;
   top: .5em;
   font-size: 1.2em;
@@ -43,12 +43,18 @@ div.singleTask p {
   transition: .25s;
 }
 
-.singleTask button#editLink {
+.singleCategory button#editLink {
   left: .5em;
 }
 
-.singleTask button#deleteLink {
+.singleCategory button#deleteLink {
   right: .5em;
+}
+
+.singleCategory button#taskLink {
+	position: relative;
+  right:    0;
+  bottom:   0;
 }
 
 button#editLink:hover, button#deleteLink:hover {

@@ -8,6 +8,8 @@ import Login from './components/Auth/Login'
 import Logout from './components/Auth/Logout'
 import Categories from './components/Categories/Categories'
 import Task from './components/Task/Task'
+import ProtectedRoute from './components/ProtectedRoute'
+import NotFound from './components/NotFound'
 
 function App() {
   return (
@@ -18,10 +20,13 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/home' element={<Home />} />
-            <Route path='/categories' element={<Categories />} />
-            <Route path='/tasks' element={<Task />} />
+            <Route path='/categories' element=
+            {<ProtectedRoute><Categories /></ProtectedRoute>} />
+            <Route path='/tasks' element=
+            {<ProtectedRoute><Task /></ProtectedRoute>} />
             <Route path='/login' element={<Login />} />
             <Route path='/logout' element={<Logout />} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
         <Footer />
         </Router>

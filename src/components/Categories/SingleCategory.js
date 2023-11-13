@@ -11,6 +11,8 @@ export default function SingleCategory(props) {
 
     const [showEdit, setShowEdit] = useState(false)
 
+    const [showTasks, setShowTasks] = useState(false)
+
     const deleteCat = (id) => {
         if (window.confirm(`Are you sure you want to delete ${props.catName}?`)) {
             axios.delete(`http://todoapi.devchristopherrandall.com/api/Categories/${id}`).then(() => {
@@ -20,18 +22,17 @@ export default function SingleCategory(props) {
     }
 
     return (
-        <tr>
-            <td>{catName}</td>
-            <td>{catDesc}</td>
+        <div className='singleCategory col-md-5 m-4'>
             {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL && (
-                <td>
+                <div>
                     <button onClick={() => setShowEdit(true)} className='m-1 rounded' id='editLink'>
                         <FaEdit />
                     </button>
+
                     <button onClick={() => deleteCat(catergoryId)} className='m-1 rounded' id='deleteLink'>
                         <FaTrashAlt />
                     </button>
-                    {/* Below we conditionally render CatEdit when showEdit is true */}
+
                     {showEdit && (
                         <CatEdit
                             setShowEdit={setShowEdit}
@@ -40,8 +41,28 @@ export default function SingleCategory(props) {
                             category={props.category}
                         />
                     )}
-                </td>
+                </div>
             )}
-        </tr>
+            {!showTasks ?
+                <>
+                    <h3>{catName}</h3>
+                    {catDesc !== null ? <p>{catDesc}</p> : <p>No description provided</p>}
+                    <button className='btn btn-color' id='taskLink' onClick={() => setShowTasks(true)}>
+                        Show Tasks
+                    </button>
+                </>
+                : 
+                <>
+                    <h3>{catName}</h3>
+                    {catDesc !== null ? <p>{catDesc}</p> : <p>No description provided</p>}
+                    <p>
+                        {props.name}
+                    </p>
+                    <button className='btn btn-color' id='taskLink' onClick={() => setShowTasks(false)}>
+                        Hide Tasks
+                    </button>
+                </>
+            }
+        </div>
     )
 }
