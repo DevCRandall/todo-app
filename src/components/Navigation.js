@@ -21,7 +21,7 @@ export default function Navigation() {
     }
 
     return (
-        <Navbar bg='light' expand='md' className='p-3'>
+        <Navbar bg='dark' data-bs-theme="dark" expand='md' className='p-3'>
             <Navbar.Brand href='/'>
                 <img alt='logo' src={logo} width='30' height='30' className='d-inline-block align-top' /> DoItNow+
             </Navbar.Brand>

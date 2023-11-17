@@ -64,6 +64,7 @@ export default function ToDo() {
                         </tr>
                     </thead>
                     <tbody>
+                        {/* Issue is in this statement */}
                         {!showComplete ?
                             <>
                                 {filter === 0 ? tasks.filter(t => t.done === false).map(t => 
@@ -78,7 +79,7 @@ export default function ToDo() {
                                 {filter === 0 ? tasks.map(t =>
                                 <SingleTask key={t.toDoId} task={t} getTasks={getTasks} />
                                 ) :
-                                tasks.filter(t => t.categoryId === filter).map(t =>
+                                tasks.filter(t => t.done === t.categoryId === filter).map(t =>
                                   <SingleTask key={t.toDoId} task={t} getTasks={getTasks} />
                                   )}
                             </>
@@ -94,7 +95,7 @@ export default function ToDo() {
                           }
                         </> :
                         <>
-                          {filter !== 0 && tasks.filter(t => t.categoryId === filter).length === 0 && 
+                          {filter !== 0 && tasks.filter(t => t.done && t.categoryId === filter).length === 0 && 
                             <h2 className='alert alert-warning text-dark text-center'>
                               There are no results for this category.
                               </h2>

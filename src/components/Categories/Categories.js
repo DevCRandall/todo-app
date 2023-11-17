@@ -5,7 +5,6 @@ import SingleCategory from './SingleCategory';
 import { useAuth } from '../../contexts/AuthContext';
 import CatCreate from './CatCreate';
 import './Categories.css'
-import SingleTask from '../Task/SingleTask'
 
 export default function Categories() {
 

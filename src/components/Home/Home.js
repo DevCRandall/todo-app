@@ -1,20 +1,14 @@
 import React from 'react'
-import { Row, Col } from 'react-bootstrap'
 import './Home.css'
 
 // image imports
-import image from '../images/ToDo-Homepage.png'
+import image from '../images/Task-BG.jpg'
 
 export default function Home() {
     return (
         <section>
-            <div className='container'>
-                <Row>
-                    <Col md={6} className='d-flex align-items-center'>
-                        <img src={image} alt='To Do' className='center' />
-                    </Col>
-
-                    <Col md={6} className='text-start'>
+            <div className='bg-image'>
+                <div>
                         <h3>ToDo App</h3>
                         <p>
                             DoItNow+ is feature-rich and user-friendly to-do list app designed to help you stay organized and boost your
@@ -68,8 +62,7 @@ export default function Home() {
                             <br />
                         </p>
                         <button className='btn btn-primary p-4'>Create Task</button>
-                    </Col>
-                </Row>
+            </div>
             </div>
         </section>
     )
