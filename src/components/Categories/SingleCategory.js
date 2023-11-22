@@ -20,7 +20,7 @@ export default function SingleCategory(props) {
     }
 
     return (
-        <div className='singleCategory col-md-5 m-4'>
+        <div className='singleCategory bg-dark col-md-5 m-4'>
             {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL && (
                 <div>
                     <button onClick={() => setShowEdit(true)} className='m-1 rounded' id='editLink'>

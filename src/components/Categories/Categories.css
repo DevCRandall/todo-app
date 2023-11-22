@@ -16,7 +16,7 @@ article.categoryGallery div.singleCategory {
   text-align: center;
   border: 2px solid rgba(140, 75, 38, 1);
   padding: 0 0 2em;
-  height: 25em;
+  height: 20em;
   width: 20em;
   position: relative;
   /* Edit and Delete buttons will be positioned absolute, so to create the boundaries for their absolute positioning, we make the outer container relative. */
@@ -32,6 +32,7 @@ div.singleCategory h3 {
 
 div.singleCategory p {
   padding: 1em;
+  color: rgba(217, 215, 215, 1);
 }
 
 .singleCategory button {
