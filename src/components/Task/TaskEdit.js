@@ -8,7 +8,7 @@ export default function TaskEdit(props) {
       show={props.showEdit}
       onHide={() => props.setShowEdit(false)}
       size='lg'>
-        <Modal.Header className='bg-info' closeButton>
+        <Modal.Header className='' closeButton>
           <h3>Edit {props.task.name}</h3>
         </Modal.Header>
         <Modal.Body>

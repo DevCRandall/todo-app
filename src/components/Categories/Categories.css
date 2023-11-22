@@ -1,7 +1,7 @@
-section.tasks {
-  background-size: 100%;
+section.categories {
+  background-size: 100vh;
   min-height: 78vh;
-  background-color: #47CEE6;
+  background-color: rgba(17, 17, 9, .8);
 }
 
 section.categories article.categoryGallery {
@@ -10,11 +10,11 @@ section.categories article.categoryGallery {
 
 /* Below is the styling for out resource tile */
 article.categoryGallery div.singleCategory {
-  background-color: rgba(215, 215, 217, .8);
-  border-radius: 5px;
+  background-color: rgba(217, 215, 215, 1);
+  border-radius: 15px 50px;
   margin: 0;
   text-align: center;
-  border: 2px solid #212529;
+  border: 2px solid rgba(140, 75, 38, 1);
   padding: 0 0 2em;
   height: 15em;
   position: relative;
@@ -22,10 +22,11 @@ article.categoryGallery div.singleCategory {
 }
 
 div.singleCategory h3 {
-  background-color: rgba(140, 97, 81, .8);
+  background-color: rgba(140, 75, 38, 1);
   padding: .5em 0;
   border-bottom: 4px solid #212529;
   color: #212529;
+  border-radius: 15px 50px 0px 0px;
 }
 
 div.singleCategory p {
@@ -39,7 +40,7 @@ div.singleCategory p {
   background: none;
   outline: none;
   border: 2px solid #000;
-  border-radius: 5px;
+  border-radius: 15px;
   transition: .25s;
 }
 

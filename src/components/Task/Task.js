@@ -5,6 +5,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import FilterTask from './FilterTask'
 import SingleTask from './SingleTask'
 import TaskCreate from './TaskCreate'
+import Spinner from '../Spinner/Spinner'
 
 export default function ToDo() {
     const [tasks, setTasks] = useState([])
@@ -17,6 +18,12 @@ export default function ToDo() {
 
     // Below hook will check the state for toggle status
     const [showComplete, setShowComplete] = useState(false)
+
+    const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    setLoaded(true)
+  }, [tasks]);
 
     const getTasks = () => {
         axios.get(`http://todoapi.devchristopherrandall.com/api/ToDos`).then((response) => {
@@ -31,13 +38,14 @@ export default function ToDo() {
 
     return (
         <section className='categories'>
-            <article className='bg-info p-5'>
-                <h1 className='text-center'>Task Dashboard</h1>
+            <article className='p-5'>
+                <h1 className='text-center text-white'>Task Dashboard</h1>
+                {!loaded && <Spinner>LOADING...</Spinner>}
             </article>
 
             {/*Begin CREATE UI = Only show to Admin */}
             {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL && (
-                <div className='bg-dark p-2 mb-3 text-center'>
+                <div className='p-2 mb-3 text-center'>
                     <button className='btn btn-info' onClick={() => setShowCreate(!showCreate)}>
                         {!showCreate ? 'Create New Task' : 'Cancel'}
                     </button>
