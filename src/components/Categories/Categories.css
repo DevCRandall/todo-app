@@ -16,16 +16,17 @@ article.categoryGallery div.singleCategory {
   text-align: center;
   border: 2px solid rgba(140, 75, 38, 1);
   padding: 0 0 2em;
-  height: 15em;
+  height: 25em;
+  width: 20em;
   position: relative;
   /* Edit and Delete buttons will be positioned absolute, so to create the boundaries for their absolute positioning, we make the outer container relative. */
 }
 
 div.singleCategory h3 {
-  background-color: rgba(140, 75, 38, 1);
+  background-color: rgba(115,58,9, 1);
   padding: .5em 0;
   border-bottom: 4px solid #212529;
-  color: #212529;
+  color: rgba(217, 215, 215, 1);
   border-radius: 15px 50px 0px 0px;
 }
 
@@ -35,7 +36,7 @@ div.singleCategory p {
 
 .singleCategory button {
   position: absolute;
-  top: .5em;
+  top: .75em;
   font-size: 1.2em;
   background: none;
   outline: none;
@@ -62,4 +63,11 @@ button#editLink:hover, button#deleteLink:hover {
   background-color: rgb(200, 200, 200);
   color: rgb(144, 45, 20);
   border-color: rgb(144, 45, 20);
+}
+
+.Catcard {
+  font-size: xx-large;
+  text-align: center;
+  flex: content;
+  position: relative;
 }

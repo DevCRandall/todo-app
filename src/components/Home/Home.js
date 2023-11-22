@@ -1,14 +1,11 @@
 import React from 'react'
 import './Home.css'
 
-// image imports
-import image from '../images/Task-BG.jpg'
-
 export default function Home() {
     return (
         <section>
             <div className='bg-image'>
-                <div>
+                <div className="position-absolute top-50 start-50 translate-middle p-5 home">
                         <h3>ToDo App</h3>
                         <p>
                             DoItNow+ is feature-rich and user-friendly to-do list app designed to help you stay organized and boost your
@@ -16,7 +13,7 @@ export default function Home() {
                             activities, and keep track of your progress. Key features include:
                         </p>
                         <br />
-                        <ul>
+                        <ul className='text-start'>
                             <li>
                                 Task Creation: Easily create, edit, and categorize tasks with detailed descriptions, due dates, and
                                 priorities.
@@ -61,7 +58,6 @@ export default function Home() {
                             With DoItNow+, you'll have everything you need to stay organized and accomplish your goals efficiently.
                             <br />
                         </p>
-                        <button className='btn btn-primary p-4'>Create Task</button>
             </div>
             </div>
         </section>

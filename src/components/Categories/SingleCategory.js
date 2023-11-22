@@ -11,8 +11,6 @@ export default function SingleCategory(props) {
 
     const [showEdit, setShowEdit] = useState(false)
 
-    const [showTasks, setShowTasks] = useState(false)
-
     const deleteCat = (id) => {
         if (window.confirm(`Are you sure you want to delete ${props.catName}?`)) {
             axios.delete(`http://todoapi.devchristopherrandall.com/api/Categories/${id}`).then(() => {
@@ -43,26 +41,12 @@ export default function SingleCategory(props) {
                     )}
                 </div>
             )}
-            {!showTasks ?
-                <>
-                    <h3>{catName}</h3>
-                    {catDesc !== null ? <p>{catDesc}</p> : <p>No description provided</p>}
-                    <button className='btn btn-color' id='taskLink' onClick={() => setShowTasks(true)}>
-                        Show Tasks
-                    </button>
-                </>
-                : 
-                <>
-                    <h3>{catName}</h3>
-                    {catDesc !== null ? <p>{catDesc}</p> : <p>No description provided</p>}
-                    <p>
-                        {props.name}
-                    </p>
-                    <button className='btn btn-color' id='taskLink' onClick={() => setShowTasks(false)}>
-                        Hide Tasks
-                    </button>
-                </>
-            }
+            <div>
+                <h3>{catName}</h3>
+                <div className='Catcard'>
+                {catDesc !== null ? <p>{catDesc}</p> : <p>No description provided</p>}
+                </div>
+            </div>
         </div>
     )
 }
