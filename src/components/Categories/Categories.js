@@ -39,7 +39,7 @@ export default function Categories() {
         {!loaded && <Spinner>LOADING...</Spinner>}
       </article>
       {currentUser.email === process.env.REACT_APP_ADMIN_EMAIL &&
-        <div className="p-2 mb-3 text-center">
+        <div className="p-2 mb-2 text-center">
           {showCreate ? 
             <>
               <button onClick={() => setShowCreate(false)} className="btn btn-warning">
